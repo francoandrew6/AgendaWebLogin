@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+}
+
+
+    <h2>Inicio</h2>
+    @if (Session["nombreUsuario"] != null)
+    {
+        <div class="jumbotron">
+            <h2>Bienvenido @Session["nombreUsuario"]</h2>
+         </div>
+         <div class ="row">
+            <div class ="col-md-4">
+                <h2>Bienvenidos a mi programa</h2>
+                <p>Este programa cuenta con ciertos aplicacion de razor basado en el modelo MVC 5que nos permite trabajar 
+                facilmente en una pagina web siendo así, que nos ayuda a desarrollarnos para realizar diferentes proyetos
+                y enfocarnos.
+                </p>
+            </div>
+        </div>
+            
+    }
+    else
+    {
+        <div class="jumbotron">
+            <h2>Por favor inicie sesion</h2>
+        </div>
+        
+        <div>
+            @Html.ActionLink("Entrar", "Login", "Login")
+        </div>
+    }
+

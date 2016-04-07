@@ -1,0 +1,86 @@
+﻿@model AgendaWeb.Models.Contacto
+
+@{
+    ViewBag.Title = "Crear";
+}
+
+<h2>Crear</h2>
+
+@using (Html.BeginForm()) 
+{
+     if (Session["nombreUsuario"] != null)
+    {
+         @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Contacto</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombreContacto, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombreContacto)
+                @Html.ValidationMessageFor(model => model.nombreContacto)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.telefonoCasa, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.telefonoCasa)
+                @Html.ValidationMessageFor(model => model.telefonoCasa)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.telefonoMovil, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.telefonoMovil)
+                @Html.ValidationMessageFor(model => model.telefonoMovil)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.correoContacto, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.correoContacto)
+                @Html.ValidationMessageFor(model => model.correoContacto)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.direccion, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.direccion)
+                @Html.ValidationMessageFor(model => model.direccion)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @Html.ActionLink("Regresar", "Index")
+    </div>
+    }
+     else
+     {
+      <div class="jumbotron">
+         <h2>Por favor inicie sesion</h2>
+      </div>
+            
+      <div>
+            @Html.ActionLink("Entrar", "Login", "Login")
+        </div>
+    }
+    
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

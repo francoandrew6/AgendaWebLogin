@@ -1,0 +1,71 @@
+﻿@model AgendaWeb.Models.Contacto
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+@if (Session["nombreUsuario"] != null)
+{
+    <div>
+    <h4>Contacto</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreContacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreContacto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefonoCasa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefonoCasa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefonoMovil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefonoMovil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correoContacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correoContacto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idContacto }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
+
+}
+else
+{
+    <div class="jumbotron">
+        <h2>Por favor inicie sesion</h2>
+    </div>
+
+    <div>
+        @Html.ActionLink("Entrar", "Login", "Login")
+    </div>
+}

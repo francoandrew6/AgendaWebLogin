@@ -1,0 +1,77 @@
+﻿@model AgendaWeb.Models.Contacto
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+@if (Session["nombreUsuario"] != null)
+{
+    <h3>¿Realmente quieres eliminar el contacto?</h3>
+<div>
+    <h4>Contacto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreContacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreContacto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefonoCasa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefonoCasa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefonoMovil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefonoMovil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correoContacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correoContacto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>
+
+}
+else
+{
+    <div class="jumbotron">
+        <h2>Por favor inicie sesion</h2>
+    </div>
+
+    <div>
+        @Html.ActionLink("Entrar", "Login", "Login")
+    </div>
+}

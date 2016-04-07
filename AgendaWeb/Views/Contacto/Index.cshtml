@@ -1,0 +1,83 @@
+﻿@model IEnumerable<AgendaWeb.Models.Contacto>
+
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Contactos</h2>
+@if (Session["nombreUsuario"] != null)
+{
+        <p>
+          @Html.ActionLink("Crear nuevo", "Create")
+       </p>
+        
+       using (Html.BeginForm("Index", "Contacto", FormMethod.Get))
+        {
+          <p>
+               Nombre a buscar: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+               <input type="submit" value="Buscar" />
+         </p>
+        }
+ 
+    
+       <table class="table">
+        <tr>
+            <th>
+              @Html.DisplayNameFor(model => model.nombreContacto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefonoCasa)
+           </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefonoMovil)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.correoContacto)
+           </th>
+         <th>
+                @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreContacto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefonoCasa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefonoMovil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correoContacto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.idContacto }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.idContacto }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.idContacto })
+        </td>
+    </tr>
+}
+
+</table>
+}
+else
+{
+    <div class="jumbotron">
+        <h2>Por favor inicie sesion</h2>
+    </div>
+
+    <div>
+        @Html.ActionLink("Entrar", "Login", "Login")
+    </div>
+}
+
+
+
+
